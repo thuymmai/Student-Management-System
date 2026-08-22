@@ -19,7 +19,7 @@ public class DataInitializer {
 		
 		//the return statement will lambda expression
 		return args -> {
-			if (!usersRepository.existByUsername("Admin")) {
+			if (!usersRepository.existsByUsername("Admin")) {
 				Users users = new Users();
 				users.setUsername("Admin");
 				users.setPassword(passwordEnconder.encode("admin@123"));

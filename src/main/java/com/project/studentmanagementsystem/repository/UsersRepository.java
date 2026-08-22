@@ -7,6 +7,6 @@ import com.project.studentmanagementsystem.model.Users;
 public interface UsersRepository extends JpaRepository<Users, Long> {
 	
 	//check if username exists, because username is meant to be unique
-	boolean existByUsername(String username);
+	boolean existsByUsername(String username);
 
 }
