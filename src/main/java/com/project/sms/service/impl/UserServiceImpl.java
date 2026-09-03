@@ -11,8 +11,17 @@ public class UserServiceImpl implements UserDetailsService {
 
     private UsersRepository usersRepository;
 
+    //constructor injection
+    //pass UsersRepository usersRepository
+    public UserServiceImpl(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
+
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+
+        //create a method in repository
+
     }
 }
