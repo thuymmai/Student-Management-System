@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
     //just need to handle this once, which will handle everything
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String genericExceptionHandler(Exception ex) {
-        log.error("CSRF validation failed", ex.getMessage());
+        log.error("Something went wrong", ex);
 
         //will create a 500 error page later
         return "500";
