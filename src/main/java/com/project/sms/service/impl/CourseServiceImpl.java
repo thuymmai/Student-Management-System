@@ -1,6 +1,7 @@
 package com.project.sms.service.impl;
 
 import com.project.sms.dto.CourseDTO;
+import com.project.sms.model.Courses;
 import com.project.sms.repository.CourseRepository;
 import com.project.sms.service.CourseService;
 import org.modelmapper.ModelMapper;
@@ -8,18 +9,22 @@ import org.modelmapper.ModelMapper;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
-    private final ModelMapper mapper;
+    private final ModelMapper mapper; //create ModelMapper's object below
 
     // created constructor
-    CourseServiceImpl(CourseRepository courseRepository) {
+    CourseServiceImpl(CourseRepository courseRepository, ModelMapper mapper) {
         this.courseRepository = courseRepository;
+        this.mapper = mapper;
 
     }
 
     @Override
     public CourseDTO createCourse(CourseDTO courseDTO) {
-        courseRepository.save(null);
 
-        return null;
+        // the object is Courses
+        // convert courseDTO into Courses
+        Courses courses = mapper.map(courseDTO, Courses.class);
+        courseRepository.save(courses);
+        return mapper.map(courses, CourseDTO.class); // convert entity back to CourseDTO
     }
 }
